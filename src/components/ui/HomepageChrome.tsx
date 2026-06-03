@@ -56,6 +56,11 @@ export function HomepageChrome() {
       <motion.div className="scroll-progress" style={{ scaleX: progress }} />
       <motion.div className="cursor-light" style={{ x: cursorXSpring, y: cursorYSpring }} />
       <div className="global-tech-field" />
+      <div className="global-depth-scanner">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className="global-signal-mesh">
         <span />
         <span />

@@ -71,13 +71,13 @@ export function ContactSection() {
                 {consoleCopy.nodes.map((node, index) => (
                   <div
                     key={node}
-                    className="flex items-center gap-3 rounded-2xl border border-white/56 bg-white/38 px-4 py-3"
+                    className="group flex items-center gap-3 rounded-2xl border border-white/56 bg-white/38 px-4 py-3 transition duration-500 hover:-translate-y-1 hover:bg-white/52"
                   >
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-xs font-black text-primary">
                       0{index + 1}
                     </span>
                     <span className="font-bold text-text">{node}</span>
-                    <ShieldCheck className="ml-auto text-primary/70" size={18} />
+                    <ShieldCheck className="ml-auto text-primary/70 transition-transform duration-500 group-hover:scale-110" size={18} />
                   </div>
                 ))}
               </div>
@@ -86,7 +86,7 @@ export function ContactSection() {
             <div className="relative z-10 mt-5 grid gap-5 md:ml-5 md:mt-0">
               <a
                 href={`mailto:${CONTACT_INFO.email}`}
-                className="glass glass-shine glass-interactive group flex flex-col justify-between gap-8 rounded-[1.5rem] p-7 text-left"
+                className="glass glass-shine glass-interactive group flex flex-col justify-between gap-8 rounded-[1.5rem] p-7 text-left transition duration-500 hover:-translate-y-1.5 hover:bg-white/58"
               >
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 text-primary transition-transform duration-500 group-hover:scale-110">
@@ -104,7 +104,7 @@ export function ContactSection() {
                 </div>
               </a>
 
-              <div className="glass glass-shine glass-interactive group flex flex-col justify-between gap-8 rounded-[1.5rem] p-7 text-left">
+              <div className="glass glass-shine glass-interactive group flex flex-col justify-between gap-8 rounded-[1.5rem] p-7 text-left transition duration-500 hover:-translate-y-1.5 hover:bg-white/58">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 text-primary transition-transform duration-500 group-hover:scale-110">
                     <MessageCircle size={26} />

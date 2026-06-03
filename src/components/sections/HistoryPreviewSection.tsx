@@ -80,7 +80,7 @@ export function HistoryPreviewSection() {
               </div>
               <div className="mt-10 grid gap-3 sm:grid-cols-3">
                 {history.years.map((yearItem, index) => (
-                  <div key={yearItem.year} className="history-preview-year-card rounded-3xl bg-white/38 p-4 ring-1 ring-white/60">
+                  <div key={yearItem.year} className="history-preview-year-card rounded-3xl bg-white/38 p-4 ring-1 ring-white/60 transition duration-500 group-hover:-translate-y-1 group-hover:bg-white/52">
                     <div className="text-4xl font-bold text-primary md:text-5xl">{yearItem.year}</div>
                     <div className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-text-secondary">
                       {history.timeline.phaseLabel} {index + 1}
@@ -131,9 +131,9 @@ export function HistoryPreviewSection() {
               <ScrollReveal key={yearItem.year} delay={index * 0.08}>
                 <Link
                   href={`/history#year-${yearItem.year}`}
-                  className="history-preview-list-card glass glass-interactive flex gap-5 rounded-3xl p-5"
+                  className="history-preview-list-card glass glass-interactive group flex gap-5 rounded-3xl p-5 transition duration-500 hover:-translate-y-1.5 hover:bg-white/58"
                 >
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/24 to-primary/8 text-primary">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/24 to-primary/8 text-primary transition-transform duration-500 group-hover:scale-110">
                     <GitBranch size={24} />
                   </div>
                   <div>

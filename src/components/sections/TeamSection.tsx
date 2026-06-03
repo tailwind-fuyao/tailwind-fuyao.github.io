@@ -5,6 +5,8 @@ import { useContent } from "@/components/LanguageProvider";
 
 export function TeamSection() {
   const { TEAM_SECTION, TEAM } = useContent();
+  const compactGroups = TEAM.filter((group) => group.members.length <= 5);
+  const expandedGroups = TEAM.filter((group) => group.members.length > 5);
 
   return (
     <section id="team" className="relative overflow-hidden py-28 md:py-40">
@@ -18,13 +20,13 @@ export function TeamSection() {
         </ScrollReveal>
 
         <div className="mb-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM.filter((g) => g.members.length <= 5).map((group, i) => (
-            <ScrollReveal key={group.role} delay={i * 0.06} className="h-full">
-              <div className="glass glass-shine glass-interactive h-full rounded-3xl p-8 text-center">
-                <h3 className="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-primary md:text-lg">
+          {compactGroups.map((group, index) => (
+            <ScrollReveal key={group.role} delay={index * 0.06} className="h-full">
+              <div className="glass glass-shine glass-interactive group h-full rounded-3xl p-8 text-center transition duration-500 hover:-translate-y-1.5 hover:bg-white/58">
+                <h3 className="mb-3 text-base font-semibold uppercase tracking-[0.15em] text-primary transition-transform duration-500 group-hover:-translate-y-0.5 md:text-lg">
                   {group.role}
                 </h3>
-                <p className="text-xl font-medium text-text md:text-2xl">
+                <p className="text-xl font-medium text-text transition-transform duration-500 group-hover:translate-y-0.5 md:text-2xl">
                   {group.members.join("、")}
                 </p>
               </div>
@@ -32,13 +34,13 @@ export function TeamSection() {
           ))}
         </div>
 
-        {TEAM.filter((g) => g.members.length > 5).map((group) => (
+        {expandedGroups.map((group) => (
           <ScrollReveal key={group.role} delay={0.3}>
-            <div className="glass glass-shine mx-auto max-w-5xl rounded-3xl p-10 text-center">
-              <h3 className="mb-5 text-base font-semibold uppercase tracking-[0.15em] text-primary md:text-lg">
+            <div className="glass glass-shine glass-interactive group mx-auto max-w-5xl rounded-3xl p-10 text-center transition duration-500 hover:-translate-y-1.5 hover:bg-white/58">
+              <h3 className="mb-5 text-base font-semibold uppercase tracking-[0.15em] text-primary transition-transform duration-500 group-hover:-translate-y-0.5 md:text-lg">
                 {group.role}
               </h3>
-              <p className="text-lg leading-loose text-text md:text-xl">
+              <p className="text-lg leading-loose text-text transition-transform duration-500 group-hover:translate-y-0.5 md:text-xl">
                 {group.members.join("、")}
               </p>
             </div>

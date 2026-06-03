@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, GitBranch, Home, Network, Route } from "lucide-react";
 import { useLang } from "@/components/LanguageProvider";
 import { AnimeHistoryEnhancer } from "@/components/ui/AnimeHistoryEnhancer";
+import { TextDecodeEffect } from "@/components/ui";
 import { historyGalleryImages, HISTORY_CONTENT } from "@/lib/programHistory";
 
 const pageNavCopy = {
@@ -79,16 +80,6 @@ export default function HistoryPage() {
         <span />
       </div>
 
-      <div className="pointer-events-none fixed bottom-6 left-0 right-0 z-40 hidden justify-center px-5 md:hidden">
-        <Link
-          href="/"
-          className="glass glass-shine pointer-events-auto inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-primary shadow-[0_18px_55px_rgba(15,23,42,0.18)]"
-        >
-          <Home size={16} />
-          {navCopy.home}
-        </Link>
-      </div>
-
       <section className="relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-24">
         <div className="section-atmosphere section-atmosphere-bay" aria-hidden="true">
           <div className="section-grid" />
@@ -107,9 +98,12 @@ export default function HistoryPage() {
               <span className="glass-pill mb-8 px-5 py-2.5 text-base font-semibold uppercase tracking-[0.18em] text-primary md:text-lg">
                 {content.hero.eyebrow}
               </span>
-              <h1 className="text-balance max-w-5xl bg-gradient-to-b from-ink via-text to-text-secondary bg-clip-text text-4xl font-bold leading-[1.08] text-transparent sm:text-5xl md:text-7xl">
-                {content.hero.title}
-              </h1>
+              <TextDecodeEffect
+                key={content.hero.title}
+                as="h1"
+                text={content.hero.title}
+                className="text-balance max-w-5xl bg-gradient-to-b from-ink via-text to-text-secondary bg-clip-text text-4xl font-bold leading-[1.08] text-transparent sm:text-5xl md:text-7xl"
+              />
               <p className="mt-8 max-w-3xl text-pretty text-lg leading-9 text-text-secondary md:text-2xl md:leading-10">
                 {content.hero.description}
               </p>
@@ -336,6 +330,9 @@ export default function HistoryPage() {
 
           <div className="history-timeline-stack relative space-y-10">
             <div className="history-timeline-packet" aria-hidden="true" />
+            <div className="history-tracing-beam" aria-hidden="true">
+              <span />
+            </div>
             {content.years.map((item, index) => (
               <article
                 id={`year-${item.year}`}

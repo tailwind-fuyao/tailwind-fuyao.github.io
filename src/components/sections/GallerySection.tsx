@@ -30,7 +30,7 @@ export function GallerySection() {
             {GALLERY_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="glass glass-shine glass-interactive rounded-3xl px-5 py-7 text-center"
+                className="glass glass-shine glass-interactive rounded-3xl px-5 py-7 text-center transition duration-500 hover:-translate-y-1.5 hover:bg-white/58"
               >
                 <div className="bg-gradient-to-b from-primary to-primary-light bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
                   {stat.value}
@@ -66,7 +66,7 @@ export function GallerySection() {
                         isLeft ? "md:mr-auto md:pr-4" : "md:ml-auto md:pl-4"
                       }`}
                     >
-                      <div className="glass glass-shine glass-interactive rounded-3xl p-6">
+                      <div className="glass glass-shine glass-interactive rounded-3xl p-6 transition duration-500 hover:-translate-y-1.5 hover:bg-white/58">
                         <span className="text-sm font-semibold uppercase tracking-wider text-primary">
                           {item.date}
                         </span>

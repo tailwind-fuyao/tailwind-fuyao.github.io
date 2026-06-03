@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useContent } from "@/components/LanguageProvider";
+import { TextDecodeEffect } from "@/components/ui";
 
 export function HeroSection() {
   const { CHROME, HERO } = useContent();
@@ -65,14 +66,18 @@ export function HeroSection() {
           </span>
         </motion.div>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-          className="text-balance mx-auto mb-7 max-w-4xl bg-gradient-to-b from-white via-white to-white/68 bg-clip-text text-5xl font-bold leading-[1.06] text-transparent drop-shadow-[0_22px_42px_rgba(0,0,0,0.35)] md:text-7xl"
         >
-          {HERO.title}
-        </motion.h1>
+          <TextDecodeEffect
+            key={HERO.title}
+            as="h1"
+            text={HERO.title}
+            className="text-balance mx-auto mb-7 max-w-4xl bg-gradient-to-b from-white via-white to-white/68 bg-clip-text text-5xl font-bold leading-[1.06] text-transparent drop-shadow-[0_22px_42px_rgba(0,0,0,0.35)] md:text-7xl"
+          />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scaleX: 0.5 }}

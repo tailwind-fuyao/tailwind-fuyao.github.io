@@ -17,6 +17,7 @@ export function SectionAtmosphere({ variant = "bay" }: SectionAtmosphereProps) {
       <div className="section-orbit section-orbit-a" />
       <div className="section-orbit section-orbit-b" />
       <div className="section-scanline" />
+      <div className="section-energy-ribbon" />
       <div className="section-dots" />
       <div className="section-node-field">
         <span />

@@ -32,7 +32,7 @@ export function AboutSection() {
             {STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="glass glass-shine glass-interactive rounded-2xl px-4 py-6"
+                className="glass glass-shine glass-interactive rounded-2xl px-4 py-6 transition duration-500 hover:-translate-y-1.5 hover:bg-white/58"
               >
                 <div className="bg-gradient-to-b from-primary-dark via-primary to-primary-light bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
                   {stat.value}
