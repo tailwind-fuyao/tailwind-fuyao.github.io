@@ -1,18 +1,19 @@
 import type { ReactNode, AnchorHTMLAttributes } from "react";
 
 interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  variant?: "primary" | "outline";
+  variant?: "primary" | "glass" | "glass-dark";
   children: ReactNode;
 }
 
 export function Button({ variant = "primary", children, className = "", ...props }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold transition-all duration-200";
+    "relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 active:scale-95";
 
   const variants = {
-    primary: "bg-primary text-white hover:bg-primary-dark shadow-lg hover:shadow-xl",
-    outline:
-      "border-2 border-white text-white hover:bg-white hover:text-primary",
+    primary:
+      "bg-primary text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40",
+    glass: "glass glass-shine text-text hover:text-primary",
+    "glass-dark": "glass-dark text-white",
   };
 
   return (

@@ -1,33 +1,65 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { notoSansSC } from "@/lib/fonts";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import {
+  CONTENT,
+  DEFAULT_LANG,
+  HTML_LANG,
+  LANG_COOKIE_NAME,
+  isLang,
+  type Lang,
+} from "@/lib/i18n";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "扶摇计划 — 五大名校校友会联合发起的华人职场领导力加速器",
-  description:
-    "扶摇计划由北大、复旦、南大、南开、武大五大校友会联合发起，硅谷资深高管担任导师，一对一助你突破华人职场天花板。",
-  openGraph: {
-    title: "扶摇计划 — 华人职场领导力加速器",
-    description:
-      "五大名校校友会联合发起，硅谷导师一对一，助你突破华人职场天花板。",
-    type: "website",
-    locale: "zh_CN",
-  },
+const OPEN_GRAPH_LOCALE: Record<Lang, string> = {
+  zh: "zh_CN",
+  tw: "zh_TW",
+  en: "en_US",
 };
 
-export default function RootLayout({
+function getRequestLang(cookieValue: string | undefined): Lang {
+  return isLang(cookieValue) ? cookieValue : DEFAULT_LANG;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const cookieStore = await cookies();
+  const lang = getRequestLang(cookieStore.get(LANG_COOKIE_NAME)?.value);
+  const content = CONTENT[lang];
+
+  return {
+    title: `${content.SITE_NAME} — ${content.HERO.title}`,
+    description: content.SITE_DESCRIPTION,
+    openGraph: {
+      title: `${content.SITE_NAME} — ${content.HERO.title}`,
+      description: content.SITE_DESCRIPTION,
+      type: "website",
+      locale: OPEN_GRAPH_LOCALE[lang],
+      alternateLocale: Object.entries(OPEN_GRAPH_LOCALE)
+        .filter(([localeLang]) => localeLang !== lang)
+        .map(([, locale]) => locale),
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const initialLang = getRequestLang(cookieStore.get(LANG_COOKIE_NAME)?.value);
+
   return (
-    <html lang="zh-CN" className={notoSansSC.variable}>
+    <html lang={HTML_LANG[initialLang]} className={notoSansSC.variable}>
       <body className="font-sans antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider initialLang={initialLang}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
