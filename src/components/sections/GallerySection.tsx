@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { GALLERY_SECTION, GALLERY_STATS, PAST_TIMELINE, ACTIVITY_PHOTOS } from "@/lib/constants";

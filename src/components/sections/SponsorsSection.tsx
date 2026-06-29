@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { SPONSORS_SECTION, SPONSORS } from "@/lib/constants";

@@ -2,7 +2,6 @@ import type {
   NavItem,
   Mentor,
   TimelineItem,
-  Highlight,
   Stat,
   ActivityPhoto,
   Sponsor,
@@ -10,8 +9,6 @@ import type {
 } from "@/types";
 
 export const SITE_NAME = "扶摇计划";
-export const SITE_DESCRIPTION =
-  "五大名校校友会联合发起，硅谷导师一对一助你突破华人职场天花板";
 
 export const NAV_ITEMS: NavItem[] = [
   { label: "关于我们", href: "#about" },
@@ -23,8 +20,6 @@ export const NAV_ITEMS: NavItem[] = [
 export const HERO = {
   title: "扶摇万里，领航未来",
   subtitle: "五大名校校友会联合发起，硅谷导师一对一助你突破职场天花板",
-  ctaPrimary: "",
-  ctaSecondary: "",
 };
 
 export const ABOUT = {
@@ -41,36 +36,6 @@ export const STATS: Stat[] = [
   { value: "57%", label: "录取率" },
   { value: "21%", label: "Manager 及以上" },
   { value: "70", label: "精英学员" },
-];
-
-export const HIGHLIGHTS_SECTION = {
-  tagline: "2026 全新升级",
-  title: "项目亮点",
-};
-
-export const HIGHLIGHTS: Highlight[] = [
-  {
-    icon: "GraduationCap",
-    title: "新锐赛道",
-    description: "特设 New Grad / Career 初期赛道，为职场新人提供高起点的职业规划",
-  },
-  {
-    icon: "Users",
-    title: "传帮带生态",
-    description:
-      "往届优秀学员回归担任助教，打造互助传承的成长社区",
-  },
-  {
-    icon: "Briefcase",
-    title: "导师矩阵扩容",
-    description: "14 位常驻导师 + 10 位飞行导师，全面辐射软件、生物制药、硬件等硅谷核心产业",
-  },
-  {
-    icon: "Target",
-    title: "1:5 精准匹配",
-    description:
-      "黄金师生比 + 多轮反馈机制，1导师 + 助教 + 队长 + 学员深度互动",
-  },
 ];
 
 export const MENTORS_SECTION = {
@@ -220,48 +185,12 @@ export const MENTORS: Mentor[] = [
   {
     name: "Hanning Zhou",
     title: "Head of Search Quality, DoorDash",
-    image: "",
     type: "flying",
   },
   {
     name: "Yiqun Cai",
     title: "VP Engineering at Microsoft",
-    image: "",
     type: "flying",
-  },
-];
-
-export const TIMELINE_SECTION = {
-  tagline: "项目安排",
-  title: "2026 年度计划",
-};
-
-export const TIMELINE: TimelineItem[] = [
-  {
-    date: "2026年1月 - 2月",
-    title: "方案讨论 · 招募启动",
-    description: "活动方案讨论，导师与志愿者招募，2月中旬开放学员报名",
-  },
-  {
-    date: "2026年3月",
-    title: "筛选匹配 · 开幕式",
-    description: "学员筛选与导师匹配完成，3月下旬举办项目开幕式暨小组破冰",
-  },
-  {
-    date: "2026年4月 - 9月",
-    title: "项目活动",
-    description:
-      "每月1次集体活动（Panel Discussion、讲座、BBQ等），每月1次小组讨论，导师学员1:1深度交流，后期多组合并讨论",
-  },
-  {
-    date: "2026年7月",
-    title: "中期反馈",
-    description: "中期反馈追踪，助教团队协助调整小组节奏",
-  },
-  {
-    date: "2026年10月",
-    title: "结营仪式",
-    description: "结业反馈追踪，总结与展望，校友网络持续连接",
   },
 ];
 
@@ -436,5 +365,5 @@ export const CONTACT_INFO: ContactInfo = {
 export const FOOTER = {
   description:
     "扶摇计划由五大高校校友会联合发起，致力于联系硅谷中高层管理人，培养未来北美华人职场领导力，帮助更多华人实现职场突破。",
-  copyright: `© ${new Date().getFullYear()} 扶摇计划 All Rights Reserved.`,
+  copyright: `© 2024-${new Date().getFullYear()} 扶摇计划 All Rights Reserved.`,
 };

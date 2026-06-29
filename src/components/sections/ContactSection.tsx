@@ -1,5 +1,3 @@
-"use client";
-
 import { Mail, MessageCircle } from "lucide-react";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { CONTACT_SECTION, CONTACT_INFO } from "@/lib/constants";

@@ -1,5 +1,3 @@
-"use client";
-
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { TEAM_SECTION, TEAM } from "@/lib/constants";
 
