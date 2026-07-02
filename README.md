@@ -34,4 +34,19 @@ To learn more about Next.js, take a look at the following resources:
 
 ## Deployment
 
-This site is hosted on [GitHub Pages](https://docs.github.com/en/pages), which allows free hosting for non-profit commercial use (unlike Vercel's free Hobby plan, which restricts any commercial use).
+This site is configured for static export and deployment to [GitHub Pages](https://docs.github.com/en/pages).
+
+### GitHub Pages setup
+
+1. Push this repository to GitHub.
+2. Open the repository Settings → Pages.
+3. Set the source to GitHub Actions.
+4. Any push to the main branch will trigger the deployment workflow in [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+
+### Local build
+
+```bash
+pnpm build
+```
+
+The static export is generated in the out directory.

@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && touch out/.nojekyll",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:gh-pages": "next build && touch out/.nojekyll"
   },
   "dependencies": {
     "framer-motion": "^12.34.2",
