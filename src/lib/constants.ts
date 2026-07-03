@@ -98,6 +98,12 @@ export const MENTORS: Mentor[] = [
     type: "resident",
   },
   {
+    name: "Sam Liu",
+    title: "Senior Director at OKX",
+    image: "/images/mentors/sam-liu.png",
+    type: "resident",
+  },
+  {
     name: "Guoying Liu",
     title: "Data Science Leader",
     image: "/images/mentors/guoying-liu.png",
@@ -119,12 +125,6 @@ export const MENTORS: Mentor[] = [
     name: "Dawei Cai",
     title: "Director, Atea Pharmaceuticals",
     image: "/images/mentors/dawei-cai.png",
-    type: "resident",
-  },
-  {
-    name: "Sam Liu",
-    title: "Senior Director at OKX",
-    image: "/images/mentors/sam-liu.png",
     type: "resident",
   },
   {
@@ -303,7 +303,7 @@ export const TEAM: TeamGroup[] = [
     members: ["柳郁青", "王鹏"],
   },
   {
-    role: "志愿者管理",
+    role: "志愿者招募与联络",
     members: ["姚俊涛", "张以明"],
   },
   {
@@ -313,10 +313,10 @@ export const TEAM: TeamGroup[] = [
   {
     role: "小组助教",
     members: [
-      "韩伟", "刘程玉", "陈万戌", "刘一萱", "郝晨洲", "王鹏",
+      "韩伟", "刘程玉",  "姚俊涛", "陈万戌", "刘一萱", "郝晨洲", "王鹏",
       "陈懿", "陈若舒", "姚毅", "张以明", "周孟宁", "周敏",
       "覃士娟", "周凌菲", "柳郁青", "刘晔", "郑琪霖", "贾哲韬",
-      "李聪", "周舟", "周劲光", "刘舒瑜", "阙晓燕", "肖雨薇",
+      "李聪", "周舟", "周劲光", "刘舒瑜",  "张石然", "阙晓燕", "肖雨薇",
       "柳芃晖", "张谨", "熊明烨", "宋佳益",
     ],
   },
