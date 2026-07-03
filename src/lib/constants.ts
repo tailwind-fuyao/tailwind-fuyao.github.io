@@ -32,10 +32,10 @@ export const ABOUT = {
 };
 
 export const STATS: Stat[] = [
-  { value: "137", label: "报名人数" },
-  { value: "57%", label: "录取率" },
-  { value: "21%", label: "Manager 及以上" },
-  { value: "70", label: "精英学员" },
+  { value: "超150人", label: "报名" },
+  { value: "低于50%", label: "录取率" },
+  { value: "超25%", label: "为管理岗" },
+  { value: "70+", label: "精英学员" },
 ];
 
 export const MENTORS_SECTION = {
