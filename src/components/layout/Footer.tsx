@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail } from "lucide-react";
 import { NAV_ITEMS, SITE_NAME, FOOTER, CONTACT_INFO } from "@/lib/constants";
 
 export function Footer() {
@@ -48,10 +48,6 @@ export function Footer() {
               <li className="flex items-center gap-2 text-sm text-white/70">
                 <Mail size={16} />
                 {CONTACT_INFO.email}
-              </li>
-              <li className="flex items-center gap-2 text-sm text-white/70">
-                <MessageCircle size={16} />
-                微信：@{CONTACT_INFO.wechat}
               </li>
             </ul>
           </div>

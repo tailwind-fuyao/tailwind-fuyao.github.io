@@ -27,7 +27,7 @@ export const ABOUT = {
   title: "助力华人职场突破",
   paragraphs: [
     "扶摇计划致力于联系硅谷中高层管理人，培养未来北美华人职场领导力，帮助更多华人实现职场突破。通过长达八个月的深度陪伴式成长平台，真正陪伴学员跨越职场瓶颈。",
-    "扶摇计划由北京大学北加州校友会、南京大学旧金山湾区校友会、复旦大学北加州校友会、南开美国北加州校友会、武汉大学北加州校友会五大高校校友会联合主办，特邀行业内资深导师，实现华人职场经验与文化的传承，帮助下一代职场管理人的发展。",
+    "扶摇计划由北京大学北加州校友会、南京大学旧金山湾区校友会、复旦大学北加州校友会、南开美国北加州校友会、武汉大学北加州校友会五大高校校友会联合发起，特邀行业内资深导师，实现华人职场经验与文化的传承，帮助下一代职场管理人的发展。",
   ],
 };
 
@@ -323,7 +323,7 @@ export const TEAM: TeamGroup[] = [
 ];
 
 export const SPONSORS_SECTION = {
-  tagline: "主办方",
+  tagline: "发起方",
   title: "五大校友会联合发起",
 };
 
@@ -359,7 +359,6 @@ export const CONTACT_SECTION = {
 
 export const CONTACT_INFO: ContactInfo = {
   email: "tailwind.connect@gmail.com",
-  wechat: "Mingye-X",
 };
 
 export const FOOTER = {
