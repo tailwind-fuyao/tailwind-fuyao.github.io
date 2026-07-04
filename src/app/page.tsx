@@ -14,9 +14,9 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <MentorsSection />
-      <GallerySection />
       <TeamSection />
       <SponsorsSection />
+      <GallerySection />
       <ContactSection />
     </>
   );
