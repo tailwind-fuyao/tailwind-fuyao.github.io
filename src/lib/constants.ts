@@ -443,3 +443,54 @@ export const FOOTER_EN = {
     "Tailwind Project is jointly initiated by five university alumni associations, connecting mid-to-senior managers across Silicon Valley to cultivate Chinese professional leadership in North America and help more people break through their careers.",
   copyright: `© 2024-${new Date().getFullYear()} Tailwind Project. All Rights Reserved.`,
 };
+
+/* ===================== 赞助商（独立页 /sponsors） ===================== */
+// 与「发起方」(SPONSORS，五大校友会) 不同：这里是按等级致谢的商业赞助商。
+// 新增赞助商只需往 TIER_SPONSORS 追加一项，页面自动按 tier 分组渲染。
+
+export type SponsorTier = "gold" | "silver";
+
+export interface TierSponsor {
+  name: string;
+  tier: SponsorTier;
+  logo: string;
+  website?: string;
+  description: string;
+}
+
+export const SPONSORS_PAGE = {
+  tagline: "鸣谢赞助",
+  title: "感谢赞助商的鼎力支持",
+  intro: "扶摇计划的顺利举办，离不开以下赞助商的慷慨支持。",
+  tierLabels: {
+    gold: "金牌赞助",
+    silver: "银牌赞助",
+  } as Record<SponsorTier, string>,
+  // 决定页面上等级的展示顺序
+  tierOrder: ["gold", "silver"] as SponsorTier[],
+};
+
+export const TIER_SPONSORS: TierSponsor[] = [
+  {
+    name: "Yu Galaxy",
+    tier: "gold",
+    logo: "/images/sponsors/yu-galaxy.png",
+    website: "https://yugalaxy.com",
+    description:
+      "Yu Galaxy（yugalaxy.com）是北大校友于平荣在硅谷创立、美国最大的单一合伙人风投基金之一（Solo GP），擅长领投不同领域的早期公司。于平荣从事风投十余年，之前成功创业。他于科罗拉多大学博尔德获得物理化学博士学位，并曾任北大研究教授、清华苏世民学院导师、科罗拉多大学科研与创新顾问。他喜欢高尔夫、爬山、书法和篆刻，并常年资助各种公益项目。",
+  },
+  {
+    name: "美国允惟律师事务所（IncepVision）",
+    tier: "gold",
+    logo: "/images/sponsors/incepvision.png",
+    description:
+      "美国允惟律师事务所（IncepVision）是一家位于硅谷的精品律师事务所，专注于公司法和证券法，致力于为企业提供兼具专业深度与商业视角的法律解决方案。其创始律师刘晓笑是硅谷活跃的公司法律师与股权架构专家，曾参与超过 70 项并购、80 余项风险投资项目，并为 700 余家科技公司提供法律服务；兼具中国律师资格及美国加州、纽约律师执业资格，同时持续推动美国公司法知识普及，在华语创业与法律社群中具有广泛影响力。",
+  },
+  {
+    name: "皓元医药（Chemexpress）",
+    tier: "silver",
+    logo: "/images/sponsors/chemexpress.png",
+    description:
+      "皓元医药是一家生物医药 CRO&CDMO 上市公司，专注于为全球生物医药行业提供小分子、ADC、小核酸、多肽等的研发和生产外包服务。皓元医药在全球范围内拥有 5 个研发中心、6 个生产基地、6 个国际商务中心，服务超过 11,000 家合作伙伴。",
+  },
+];
