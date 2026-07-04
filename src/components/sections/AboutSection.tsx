@@ -1,17 +1,24 @@
+import type { Stat } from "@/types";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { ABOUT, STATS } from "@/lib/constants";
 
-export function AboutSection() {
+export function AboutSection({
+  about = ABOUT,
+  stats = STATS,
+}: {
+  about?: typeof ABOUT;
+  stats?: Stat[];
+} = {}) {
   return (
     <section id="about" className="bg-bg py-24 md:py-36">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <ScrollReveal>
-          <SectionHeading tagline={ABOUT.tagline} title={ABOUT.title} />
+          <SectionHeading tagline={about.tagline} title={about.title} />
         </ScrollReveal>
 
         <ScrollReveal>
           <div className="space-y-5">
-            {ABOUT.paragraphs.map((p, i) => (
+            {about.paragraphs.map((p, i) => (
               <p key={i} className="text-base leading-loose text-text-secondary">
                 {p}
               </p>
@@ -22,7 +29,7 @@ export function AboutSection() {
         {/* Stats */}
         <ScrollReveal delay={0.2}>
           <div className="mt-20 grid grid-cols-2 gap-10 md:grid-cols-4">
-            {STATS.map((stat) => (
+            {stats.map((stat) => (
               <div key={stat.label}>
                 <div className="mb-2 text-4xl font-bold text-primary md:text-5xl">
                   {stat.value}

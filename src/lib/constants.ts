@@ -366,3 +366,42 @@ export const FOOTER = {
     "扶摇计划由五大高校校友会联合发起，致力于联系硅谷中高层管理人，培养未来北美华人职场领导力，帮助更多华人实现职场突破。",
   copyright: `© 2024-${new Date().getFullYear()} 扶摇计划 All Rights Reserved.`,
 };
+
+/* ===================== English (i18n) ===================== */
+// 扶摇计划的官方英文名统一为 Tailwind Project。英文版仅保留 About 与 Contact。
+
+export const SITE_NAME_EN = "Tailwind Project";
+
+export const NAV_ITEMS_EN: NavItem[] = [
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const ABOUT_EN = {
+  tagline: "About Tailwind Project",
+  title: "Empowering Chinese Professionals",
+  paragraphs: [
+    "Tailwind Project connects mid-to-senior managers across Silicon Valley to cultivate the next generation of Chinese professional leadership in North America and help more people break through their career ceilings. Over an eight-month, deeply immersive growth journey, we walk alongside our members as they get past career bottlenecks.",
+    "Tailwind Project is jointly initiated by five university alumni associations — Peking University (Northern California), Nanjing University (SF Bay Area), Fudan University (Northern California), Nankai University (Northern California, USA), and Wuhan University (Northern California). With seasoned industry mentors, we pass on professional experience and culture to support the growth of the next generation of managers.",
+  ],
+};
+
+export const STATS_EN: Stat[] = [
+  { value: "150+", label: "Applicants" },
+  { value: "<50%", label: "Acceptance Rate" },
+  { value: ">25%", label: "Manager & Above" },
+  { value: "70+", label: "Elite Members" },
+];
+
+export const CONTACT_SECTION_EN = {
+  tagline: "Contact Us",
+  title: "Join Tailwind Project",
+  description:
+    "If you are interested in Tailwind Project, we would love to hear from you. Whether you would like to join as a member, mentor, or volunteer, we look forward to connecting with you.",
+};
+
+export const FOOTER_EN = {
+  description:
+    "Tailwind Project is jointly initiated by five university alumni associations, connecting mid-to-senior managers across Silicon Valley to cultivate Chinese professional leadership in North America and help more people break through their careers.",
+  copyright: `© 2024-${new Date().getFullYear()} Tailwind Project. All Rights Reserved.`,
+};

@@ -1,18 +1,25 @@
 import { Mail } from "lucide-react";
+import type { ContactInfo } from "@/types";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { CONTACT_SECTION, CONTACT_INFO } from "@/lib/constants";
 
-export function ContactSection() {
+export function ContactSection({
+  section = CONTACT_SECTION,
+  info = CONTACT_INFO,
+}: {
+  section?: typeof CONTACT_SECTION;
+  info?: ContactInfo;
+} = {}) {
   return (
     <section id="contact" className="bg-bg py-24 md:py-36">
       <div className="mx-auto max-w-2xl px-6 text-center">
         <ScrollReveal>
-          <SectionHeading tagline={CONTACT_SECTION.tagline} title={CONTACT_SECTION.title} />
+          <SectionHeading tagline={section.tagline} title={section.title} />
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
           <p className="mb-12 text-base leading-relaxed text-text-secondary">
-            {CONTACT_SECTION.description}
+            {section.description}
           </p>
         </ScrollReveal>
 
@@ -24,10 +31,10 @@ export function ContactSection() {
               </div>
               <p className="text-sm font-semibold text-text">Email</p>
               <a
-                href={`mailto:${CONTACT_INFO.email}`}
+                href={`mailto:${info.email}`}
                 className="text-sm text-primary hover:underline"
               >
-                {CONTACT_INFO.email}
+                {info.email}
               </a>
             </div>
           </div>

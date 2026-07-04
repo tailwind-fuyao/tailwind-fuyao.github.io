@@ -2,12 +2,30 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { NAV_ITEMS, SITE_NAME } from "@/lib/constants";
+import {
+  NAV_ITEMS,
+  NAV_ITEMS_EN,
+  SITE_NAME,
+  SITE_NAME_EN,
+} from "@/lib/constants";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isEn = pathname?.startsWith("/en") ?? false;
+
+  const navItems = isEn ? NAV_ITEMS_EN : NAV_ITEMS;
+  const siteName = isEn ? SITE_NAME_EN : SITE_NAME;
+  const homeHref = isEn ? "/en" : "/";
+  // 语言切换目标：中文页 → 英文页，英文页 → 中文页
+  const altHref = isEn ? "/" : "/en";
+  const altLabel = isEn ? "中文" : "EN";
+  // 英文版顶部没有深色 Hero，透明导航栏的白字会看不见，因此始终用实底样式。
+  const solid = scrolled || isEn;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -20,60 +38,73 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 shadow-sm backdrop-blur-sm"
-          : "bg-transparent"
+        solid ? "bg-white/95 shadow-sm backdrop-blur-sm" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2">
+        <Link href={homeHref} className="flex items-center gap-2">
           <Image
             src="/images/fuyao_logo.png"
-            alt={SITE_NAME}
+            alt={siteName}
             width={40}
             height={40}
-            className={`transition-all ${scrolled ? "" : "brightness-0 invert"}`}
+            className={`transition-all ${solid ? "" : "brightness-0 invert"}`}
           />
           <span
             className={`text-xl font-bold transition-colors ${
-              scrolled ? "text-primary" : "text-white"
+              solid ? "text-primary" : "text-white"
             }`}
           >
-            {SITE_NAME}
+            {siteName}
           </span>
-        </a>
+        </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  scrolled ? "text-text" : "text-white/90"
-                }`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-4 md:gap-6">
+          {/* Desktop nav */}
+          <ul className="hidden items-center gap-8 md:flex">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    solid ? "text-text" : "text-white/90"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className={`md:hidden ${scrolled ? "text-text" : "text-white"}`}
-          aria-label={mobileOpen ? "关闭菜单" : "打开菜单"}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Language toggle */}
+          <Link
+            href={altHref}
+            aria-label={isEn ? "切换到中文" : "Switch to English"}
+            className={`rounded-full border px-3 py-1 text-sm font-medium transition-colors ${
+              solid
+                ? "border-primary/40 text-primary hover:bg-primary hover:text-white"
+                : "border-white/50 text-white hover:bg-white/10"
+            }`}
+          >
+            {altLabel}
+          </Link>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className={`md:hidden ${solid ? "text-text" : "text-white"}`}
+            aria-label={mobileOpen ? "关闭菜单" : "打开菜单"}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="border-t border-gray-100 bg-white md:hidden">
           <ul className="flex flex-col px-6 py-4">
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
