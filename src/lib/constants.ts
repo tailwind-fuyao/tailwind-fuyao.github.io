@@ -18,7 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const HERO = {
-  title: "扶摇万里，领航未来",
+  title: "聚百舸之力，扶摇万里\n行鲲鹏之志，直上九霄",
   subtitle: "五大名校校友会联合发起，硅谷导师一对一助你突破职场天花板",
 };
 

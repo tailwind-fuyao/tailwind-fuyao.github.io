@@ -23,7 +23,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-6 text-4xl font-bold leading-tight text-white md:text-6xl"
+          className="mb-6 whitespace-pre-line text-4xl font-bold leading-tight text-white md:text-6xl"
         >
           {HERO.title}
         </motion.h1>
