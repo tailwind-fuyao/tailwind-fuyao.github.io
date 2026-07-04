@@ -14,6 +14,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "关于我们", href: "#about" },
   { label: "导师团队", href: "#mentors" },
   { label: "历年成果", href: "#gallery" },
+  { label: "赞助商", href: "/sponsors" },
   { label: "联系我们", href: "#contact" },
 ];
 

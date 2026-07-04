@@ -23,8 +23,11 @@ export function Navbar() {
   const siteName = isEn ? SITE_NAME_EN : SITE_NAME;
   const homeHref = isEn ? "/en" : "/";
   const isHome = path === homeHref;
-  // 锚点在各自首页内直接滚动；在子页面（如 /gallery/2025）需先回到首页再滚动。
-  const anchorHref = (href: string) => (isHome ? href : `${homeHref}${href}`);
+  // 页面链接（如 /sponsors）原样使用；锚点在各自首页内直接滚动，
+  // 在子页面（如 /gallery/2025）需先回到首页再滚动。
+  const isPageLink = (href: string) => !href.startsWith("#");
+  const resolveHref = (href: string) =>
+    isPageLink(href) || isHome ? href : `${homeHref}${href}`;
   // 语言切换目标：中文页 → 英文页，英文页 → 中文页
   const altHref = isEn ? "/" : "/en";
   const altLabel = isEn ? "中文" : "EN";
@@ -67,18 +70,24 @@ export function Navbar() {
         <div className="flex items-center gap-4 md:gap-6">
           {/* Desktop nav */}
           <ul className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={anchorHref(item.href)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    solid ? "text-text" : "text-white/90"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const cls = `text-sm font-medium transition-colors hover:text-primary ${
+                solid ? "text-text" : "text-white/90"
+              }`;
+              return (
+                <li key={item.href}>
+                  {isPageLink(item.href) ? (
+                    <Link href={item.href} className={cls}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a href={resolveHref(item.href)} className={cls}>
+                      {item.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           {/* Language toggle */}
@@ -109,17 +118,23 @@ export function Navbar() {
       {mobileOpen && (
         <div className="border-t border-gray-100 bg-white md:hidden">
           <ul className="flex flex-col px-6 py-4">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={anchorHref(item.href)}
-                  onClick={handleNavClick}
-                  className="block py-3 text-sm font-medium text-text transition-colors hover:text-primary"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const cls =
+                "block py-3 text-sm font-medium text-text transition-colors hover:text-primary";
+              return (
+                <li key={item.href}>
+                  {isPageLink(item.href) ? (
+                    <Link href={item.href} onClick={handleNavClick} className={cls}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a href={resolveHref(item.href)} onClick={handleNavClick} className={cls}>
+                      {item.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

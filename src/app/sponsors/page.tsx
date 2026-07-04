@@ -20,7 +20,7 @@ export default function SponsorsPage() {
       <div className="mx-auto max-w-4xl px-6">
         <ScrollReveal>
           <Link
-            href="/#sponsors"
+            href="/"
             className="mb-6 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary-dark"
           >
             <ArrowLeft size={16} />

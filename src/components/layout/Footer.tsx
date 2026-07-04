@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Mail } from "lucide-react";
 import {
@@ -19,8 +20,10 @@ export function Footer() {
   const isEn = path === "/en" || path.startsWith("/en/");
   const homeHref = isEn ? "/en" : "/";
   const isHome = path === homeHref;
-  // 子页面（如 /gallery/2025）的锚点需先回到首页再滚动。
-  const anchorHref = (href: string) => (isHome ? href : `${homeHref}${href}`);
+  // 页面链接（如 /sponsors）原样使用；子页面（如 /gallery/2025）的锚点需先回到首页再滚动。
+  const isPageLink = (href: string) => !href.startsWith("#");
+  const resolveHref = (href: string) =>
+    isPageLink(href) || isHome ? href : `${homeHref}${href}`;
 
   const navItems = isEn ? NAV_ITEMS_EN : NAV_ITEMS;
   const siteName = isEn ? SITE_NAME_EN : SITE_NAME;
@@ -53,16 +56,22 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-bold">{quickLinksTitle}</h3>
             <ul className="space-y-2">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={anchorHref(item.href)}
-                    className="text-sm text-white/70 transition-colors hover:text-white"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              {navItems.map((item) => {
+                const cls = "text-sm text-white/70 transition-colors hover:text-white";
+                return (
+                  <li key={item.href}>
+                    {isPageLink(item.href) ? (
+                      <Link href={item.href} className={cls}>
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a href={resolveHref(item.href)} className={cls}>
+                        {item.label}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
