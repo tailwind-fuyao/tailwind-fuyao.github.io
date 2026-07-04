@@ -31,7 +31,7 @@ export function AboutSection({
           <div className="mt-20 grid grid-cols-2 gap-10 md:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <div className="mb-2 text-4xl font-bold text-primary md:text-5xl">
+                <div className="mb-2 whitespace-nowrap text-2xl font-bold text-primary md:text-3xl">
                   {stat.value}
                 </div>
                 <div className="text-sm text-text-secondary">{stat.label}</div>

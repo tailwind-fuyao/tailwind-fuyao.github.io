@@ -13,7 +13,7 @@ export const SITE_NAME = "扶摇计划";
 export const NAV_ITEMS: NavItem[] = [
   { label: "关于我们", href: "#about" },
   { label: "导师团队", href: "#mentors" },
-  { label: "往期活动", href: "#gallery" },
+  { label: "历年成果", href: "#gallery" },
   { label: "联系我们", href: "#contact" },
 ];
 
@@ -35,7 +35,7 @@ export const STATS: Stat[] = [
   { value: "超150人", label: "报名" },
   { value: "低于50%", label: "录取率" },
   { value: "超25%", label: "为管理岗" },
-  { value: "70+", label: "精英学员" },
+  { value: "70+", label: "每届精英学员" },
 ];
 
 export const MENTORS_SECTION = {
@@ -195,10 +195,10 @@ export const MENTORS: Mentor[] = [
 ];
 
 export const GALLERY_SECTION = {
-  tagline: "往期活动",
-  title: "2025 精彩回顾",
+  tagline: "历年成果",
+  title: "记录每一届的成长",
   summary:
-    "2025 年扶摇计划历时八个月，14 位常驻导师与 5 位飞行导师倾囊相授，70 名学员完成了 8 次全体活动和近 100 次小组深度交流，学员满意度高达 9.31/10。",
+    "扶摇计划每年都在续写新的篇章。点击任一年度，回顾那一届的活动与精彩瞬间。",
 };
 
 export const GALLERY_STATS: Stat[] = [
@@ -274,6 +274,44 @@ export const ACTIVITY_PHOTOS: ActivityPhoto[] = [
   { src: "/images/gallery/boxphoto87.jpg", alt: "小组讨论 — 导师与学员深度互动" },
   { src: "/images/gallery/boxphoto66.jpg", alt: "学员交流 — 跨组互动与碰撞" },
 ];
+
+// 历年成果：每新增一届（如 2026），只需往 GALLERY_YEARS 追加一项，
+// 首页索引卡片与年度详情页（/gallery/<year>）都会自动生成。
+export interface GalleryYear {
+  year: string; // 路由 slug：/gallery/<year>
+  title: string; // 索引卡片与详情页标题
+  blurb: string; // 索引卡片上的简介
+  cover?: string; // 封面图；留空则用装饰渐变
+  available: boolean; // 内容是否就绪；false 时显示「敬请期待」占位
+  summary?: string; // 详情页开头简介
+  stats?: Stat[];
+  timeline?: PastTimelineItem[];
+  photos?: ActivityPhoto[];
+}
+
+export const GALLERY_YEARS: GalleryYear[] = [
+  {
+    year: "2025",
+    title: "2025 精彩回顾",
+    blurb: "8 次全体活动、近 100 次小组交流，70 名学员的八个月成长之旅。",
+    cover: "/images/gallery/boxphoto47.jpg",
+    available: true,
+    summary:
+      "2025 年扶摇计划历时八个月，14 位常驻导师与 5 位飞行导师倾囊相授，70 名学员完成了 8 次全体活动和近 100 次小组深度交流，学员满意度高达 9.31/10。",
+    stats: GALLERY_STATS,
+    timeline: PAST_TIMELINE,
+    photos: ACTIVITY_PHOTOS,
+  },
+  {
+    year: "2024",
+    title: "2024 精彩回顾",
+    blurb: "内容整理中，敬请期待。",
+    available: false,
+  },
+];
+
+export const getGalleryYear = (year: string): GalleryYear | undefined =>
+  GALLERY_YEARS.find((y) => y.year === year);
 
 export const TEAM_SECTION = {
   tagline: "项目团队",
@@ -390,7 +428,7 @@ export const STATS_EN: Stat[] = [
   { value: "150+", label: "Applicants" },
   { value: "<50%", label: "Acceptance Rate" },
   { value: ">25%", label: "Manager & Above" },
-  { value: "70+", label: "Elite Members" },
+  { value: "70+", label: "Elite Members / Cohort" },
 ];
 
 export const CONTACT_SECTION_EN = {

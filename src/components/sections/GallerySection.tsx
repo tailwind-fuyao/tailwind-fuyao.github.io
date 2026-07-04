@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
-import { GALLERY_SECTION, GALLERY_STATS, PAST_TIMELINE, ACTIVITY_PHOTOS } from "@/lib/constants";
+import { GALLERY_SECTION, GALLERY_YEARS } from "@/lib/constants";
 
 export function GallerySection() {
   return (
@@ -11,81 +13,54 @@ export function GallerySection() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-base leading-relaxed text-text-secondary">
+          <p className="mx-auto mb-14 max-w-2xl text-center text-base leading-relaxed text-text-secondary">
             {GALLERY_SECTION.summary}
           </p>
         </ScrollReveal>
 
-        {/* Stats */}
-        <ScrollReveal delay={0.1}>
-          <div className="mb-20 grid grid-cols-2 gap-8 md:grid-cols-4">
-            {GALLERY_STATS.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="mb-1 text-3xl font-bold text-primary md:text-4xl">
-                  {stat.value}
+        <div className="grid gap-6 sm:grid-cols-2">
+          {GALLERY_YEARS.map((y, i) => (
+            <ScrollReveal key={y.year} delay={i * 0.08}>
+              <Link
+                href={`/gallery/${y.year}`}
+                className="group relative block aspect-[3/2] overflow-hidden rounded-2xl bg-primary-dark shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-lg"
+              >
+                {y.cover ? (
+                  <Image
+                    src={y.cover}
+                    alt={y.title}
+                    fill
+                    className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
+                      y.available ? "" : "opacity-40"
+                    }`}
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark" />
+                )}
+
+                {/* Dark gradient for text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+
+                {/* "敬请期待" badge for years not yet published */}
+                {!y.available && (
+                  <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-primary">
+                    敬请期待
+                  </span>
+                )}
+
+                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                  <span className="text-4xl font-bold leading-none md:text-5xl">{y.year}</span>
+                  <h3 className="mt-2 text-lg font-semibold">{y.title}</h3>
+                  <p className="mt-1 text-sm text-white/80">{y.blurb}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium">
+                    {y.available ? "查看回顾" : "敬请期待"}
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </span>
                 </div>
-                <div className="text-sm text-text-secondary">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
-
-        {/* Timeline — alternating left/right on desktop */}
-        <div className="mx-auto mb-20 max-w-3xl">
-          <ScrollReveal>
-            <h3 className="mb-12 text-center text-xl font-bold text-text">活动时间线</h3>
-          </ScrollReveal>
-          <div className="relative">
-            <div className="absolute left-3 top-0 bottom-0 w-px bg-primary/20 md:left-1/2 md:-translate-x-px" />
-
-            {PAST_TIMELINE.map((item, i) => {
-              const isLeft = i % 2 === 0;
-              return (
-                <ScrollReveal key={item.date} delay={i * 0.06}>
-                  <div className="relative mb-10 last:mb-0 flex items-start gap-6 md:gap-0">
-                    <div className="absolute left-3 top-1.5 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-primary bg-white md:left-1/2" />
-
-                    <div
-                      className={`ml-8 w-full md:ml-0 md:w-[calc(50%-2rem)] ${
-                        isLeft
-                          ? "md:mr-auto md:pr-4 md:text-right"
-                          : "md:ml-auto md:pl-4 md:text-left"
-                      }`}
-                    >
-                      <span className="mb-1 inline-block text-sm font-semibold tracking-wide text-primary">
-                        {item.date}
-                      </span>
-                      <h4 className="text-base font-bold text-text md:text-lg">{item.title}</h4>
-                      <p className="mt-1 text-sm leading-relaxed text-text-secondary">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Photos */}
-        <ScrollReveal>
-          <h3 className="mb-10 text-center text-xl font-bold text-text">精彩瞬间</h3>
-        </ScrollReveal>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {ACTIVITY_PHOTOS.map((photo, i) => (
-            <ScrollReveal key={photo.src} delay={i * 0.08}>
-              <div className="group relative aspect-[4/3] overflow-hidden rounded-xl">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <p className="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-sm font-medium text-white transition-transform duration-300 group-hover:translate-y-0">
-                  {photo.alt}
-                </p>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

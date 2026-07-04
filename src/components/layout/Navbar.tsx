@@ -16,16 +16,21 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const isEn = pathname?.startsWith("/en") ?? false;
+  const path = (pathname ?? "/").replace(/\/+$/, "") || "/";
+  const isEn = path === "/en" || path.startsWith("/en/");
 
   const navItems = isEn ? NAV_ITEMS_EN : NAV_ITEMS;
   const siteName = isEn ? SITE_NAME_EN : SITE_NAME;
   const homeHref = isEn ? "/en" : "/";
+  const isHome = path === homeHref;
+  // 锚点在各自首页内直接滚动；在子页面（如 /gallery/2025）需先回到首页再滚动。
+  const anchorHref = (href: string) => (isHome ? href : `${homeHref}${href}`);
   // 语言切换目标：中文页 → 英文页，英文页 → 中文页
   const altHref = isEn ? "/" : "/en";
   const altLabel = isEn ? "中文" : "EN";
-  // 英文版顶部没有深色 Hero，透明导航栏的白字会看不见，因此始终用实底样式。
-  const solid = scrolled || isEn;
+  // 只有中文首页顶部有深色 Hero；其余页面（英文页、年度详情页等）始终用实底样式，
+  // 否则透明导航栏的白字会看不见。
+  const solid = scrolled || path !== "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -65,7 +70,7 @@ export function Navbar() {
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
-                  href={item.href}
+                  href={anchorHref(item.href)}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
                     solid ? "text-text" : "text-white/90"
                   }`}
@@ -107,7 +112,7 @@ export function Navbar() {
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
-                  href={item.href}
+                  href={anchorHref(item.href)}
                   onClick={handleNavClick}
                   className="block py-3 text-sm font-medium text-text transition-colors hover:text-primary"
                 >
