@@ -13,7 +13,7 @@ export function GallerySection() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <p className="mx-auto mb-14 max-w-2xl text-center text-base leading-relaxed text-text-secondary">
+          <p className="mx-auto mb-14 max-w-2xl text-center text-lg leading-relaxed text-text-secondary md:text-xl">
             {GALLERY_SECTION.summary}
           </p>
         </ScrollReveal>
@@ -50,9 +50,9 @@ export function GallerySection() {
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                   <span className="text-4xl font-bold leading-none md:text-5xl">{y.year}</span>
-                  <h3 className="mt-2 text-lg font-semibold">{y.title}</h3>
-                  <p className="mt-1 text-sm text-white/80">{y.blurb}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium">
+                  <h3 className="mt-2 text-xl font-semibold md:text-2xl">{y.title}</h3>
+                  <p className="mt-1.5 text-base text-white/80">{y.blurb}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-base font-medium">
                     {y.available ? "查看回顾" : "敬请期待"}
                     <ArrowRight
                       size={16}
