@@ -11,13 +11,13 @@ export function SponsorsSection() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="flex flex-wrap items-center justify-center gap-14 md:gap-20">
+          <div className="grid grid-cols-5 items-start gap-2 sm:gap-6 md:gap-10">
             {SPONSORS.map((sponsor) => (
               <div
                 key={sponsor.name}
-                className="flex flex-col items-center gap-3"
+                className="flex flex-col items-center gap-2 md:gap-3"
               >
-                <div className="relative h-20 w-20 overflow-hidden rounded-full bg-white shadow-sm">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-white shadow-sm sm:h-16 sm:w-16 md:h-20 md:w-20">
                   <Image
                     src={sponsor.logo}
                     alt={sponsor.name}
@@ -25,7 +25,7 @@ export function SponsorsSection() {
                     className="object-contain p-1"
                   />
                 </div>
-                <span className="text-xs text-text-secondary">
+                <span className="text-center text-[11px] leading-tight text-text-secondary sm:text-sm md:text-base">
                   {sponsor.name}
                 </span>
               </div>

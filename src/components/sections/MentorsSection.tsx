@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { ScrollReveal, SectionHeading } from "@/components/ui";
 import { MENTORS_SECTION, MENTORS } from "@/lib/constants";
 import type { Mentor } from "@/types";
@@ -17,17 +16,13 @@ function MentorCard({ name, title, image }: Mentor) {
           </div>
         )}
       </div>
-      <h3 className="text-sm font-bold text-text">{name}</h3>
-      <p className="mt-1 text-xs leading-snug text-text-secondary/70">{title}</p>
+      <h3 className="text-base font-bold text-text md:text-lg">{name}</h3>
+      <p className="mt-1.5 text-sm leading-snug text-text-secondary/70 md:text-base">{title}</p>
     </div>
   );
 }
 
 export function MentorsSection() {
-  const [tab, setTab] = useState<"resident" | "flying">("resident");
-
-  const filtered = MENTORS.filter((m) => m.type === tab);
-
   return (
     <section id="mentors" className="bg-bg py-24 md:py-36">
       <div className="mx-auto max-w-5xl px-6">
@@ -35,34 +30,8 @@ export function MentorsSection() {
           <SectionHeading tagline={MENTORS_SECTION.tagline} title={MENTORS_SECTION.title} />
         </ScrollReveal>
 
-        {/* Tabs */}
-        <ScrollReveal>
-          <div className="mb-16 flex justify-center gap-4">
-            <button
-              onClick={() => setTab("resident")}
-              className={`rounded-full px-6 py-2 text-sm font-semibold transition-colors ${
-                tab === "resident"
-                  ? "bg-primary text-white"
-                  : "bg-bg-alt text-text-secondary hover:text-text"
-              }`}
-            >
-              {MENTORS_SECTION.tabs.resident}
-            </button>
-            <button
-              onClick={() => setTab("flying")}
-              className={`rounded-full px-6 py-2 text-sm font-semibold transition-colors ${
-                tab === "flying"
-                  ? "bg-primary text-white"
-                  : "bg-bg-alt text-text-secondary hover:text-text"
-              }`}
-            >
-              {MENTORS_SECTION.tabs.flying}
-            </button>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid gap-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-          {filtered.map((mentor, i) => (
+        <div className="mt-16 grid gap-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+          {MENTORS.filter((mentor) => mentor.image).map((mentor, i) => (
             <ScrollReveal key={mentor.name} delay={i * 0.05}>
               <MentorCard {...mentor} />
             </ScrollReveal>
