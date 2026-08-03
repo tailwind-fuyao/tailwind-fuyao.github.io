@@ -3,6 +3,7 @@ out/
 .next/
 *.tsbuildinfo
 .DS_Store
+next-env.d.ts
 
 # Only include used images, ignore the rest of pptx folder
 public/images/pptx/*

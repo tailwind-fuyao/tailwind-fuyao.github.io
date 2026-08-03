@@ -186,11 +186,13 @@ export const MENTORS: Mentor[] = [
   {
     name: "Hanning Zhou",
     title: "Head of Search Quality, DoorDash",
+    image: "/images/mentors/hanning-zhou.png",
     type: "flying",
   },
   {
     name: "Yiqun Cai",
     title: "VP Engineering at Microsoft",
+    image: "/images/mentors/yiqun-cai.png",
     type: "flying",
   },
 ];
