@@ -142,6 +142,12 @@ export const MENTORS: Mentor[] = [
     type: "flying",
   },
   {
+    name: "Zhiping Yang",
+    title: "CEO at PCB Automation Inc., IEEE Fellow",
+    image: "/images/mentors/zhiping-yang.jpg",
+    type: "flying",
+  },
+  {
     name: "Yanmin Tao",
     title: "PMP, Senior Project Manager",
     image: "/images/mentors/yanmin-tao.png",
