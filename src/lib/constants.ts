@@ -144,7 +144,7 @@ export const MENTORS: Mentor[] = [
   {
     name: "Zhiping Yang",
     title: "CEO at PCB Automation Inc., IEEE Fellow",
-    image: "/images/mentors/zhiping-yang.jpg",
+    image: "/images/mentors/zhiping-yang.png",
     type: "flying",
   },
   {
