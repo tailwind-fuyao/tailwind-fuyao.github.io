@@ -457,7 +457,7 @@ export const FOOTER_EN = {
 // 与「发起方」(SPONSORS，五大校友会) 不同：这里是按等级致谢的商业赞助商。
 // 新增赞助商只需往 TIER_SPONSORS 追加一项，页面自动按 tier 分组渲染。
 
-export type SponsorTier = "gold" | "silver";
+export type SponsorTier = "gold" | "silver" | "venue";
 
 export interface TierSponsor {
   name: string;
@@ -474,9 +474,10 @@ export const SPONSORS_PAGE = {
   tierLabels: {
     gold: "金牌赞助",
     silver: "银牌赞助",
+    venue: "场地赞助",
   } as Record<SponsorTier, string>,
   // 决定页面上等级的展示顺序
-  tierOrder: ["gold", "silver"] as SponsorTier[],
+  tierOrder: ["gold", "silver", "venue"] as SponsorTier[],
 };
 
 export const TIER_SPONSORS: TierSponsor[] = [
@@ -500,7 +501,7 @@ export const TIER_SPONSORS: TierSponsor[] = [
     tier: "silver",
     logo: "/images/sponsors/weiming-angels.png",
     description:
-      "未名天使（Weiming Angels）成立于 2014 年 1 月，由北京大学北加州校友会企业家与高管俱乐部（EnE Club）发起，是硅谷活跃的华人天使投资人网络，现有 40 余位天使投资人。未名天使每月评估创业项目，主要关注估值 1000 万美元以下的早期公司，由成员共同完成尽职调查与投资决策，并在资金之外为创业者提供行业指导与管理辅导。硅谷早期基金 SV Tech Ventures 亦源自未名天使俱乐部。",
+      "未名天使（Weiming Angels）成立于 2014 年 1 月，是硅谷活跃的华人天使投资人网络，现有 40 余位天使投资人。未名天使每月评估创业项目，主要关注估值 1000 万美元以下的早期公司，由成员共同完成尽职调查与投资决策，并在资金之外为创业者提供行业指导与管理辅导。硅谷早期基金 SV Tech Ventures 亦源自未名天使俱乐部。",
   },
   {
     name: "皓元医药（Chemexpress）",
@@ -508,5 +509,21 @@ export const TIER_SPONSORS: TierSponsor[] = [
     logo: "/images/sponsors/chemexpress.png",
     description:
       "皓元医药是一家生物医药 CRO&CDMO 上市公司，专注于为全球生物医药行业提供小分子、ADC、小核酸、多肽等的研发和生产外包服务。皓元医药在全球范围内拥有 5 个研发中心、6 个生产基地、6 个国际商务中心，服务超过 11,000 家合作伙伴。",
+  },
+  {
+    name: "EEE Foundation（Executive Education Ecosystem）",
+    tier: "venue",
+    logo: "/images/sponsors/eee-foundation.jpg",
+    website: "https://www.linkedin.com/company/eee-foundation",
+    description:
+      "EEE Foundation（Executive Education Ecosystem）是一家位于硅谷圣克拉拉的非营利基金会，理念为 Executive | Education | Ecosystem——让教育、创新与社群相互连接。基金会致力于搭建一个高信任度的生态网络，连接创业者、企业管理者、投资人、研究者与全球机构，并通过精选项目、创新论坛、高管学习课程与社群活动展开，重点关注 AI 教育、机器人竞赛与人才培养、企业级 AI 应用以及国际合作。本次为扶摇计划提供活动场地支持。",
+  },
+  {
+    name: "深圳湾硅谷科技创新中心（Shenzhen Bay Innovation Centre）",
+    tier: "venue",
+    logo: "/images/sponsors/shenzhen-bay.png",
+    website: "https://x.com/szbayinno",
+    description:
+      "深圳湾硅谷科技创新中心（Shenzhen Bay Innovation Centre）位于硅谷核心区圣克拉拉（3120 Scott Blvd, Santa Clara, CA），由深圳湾科技发展有限公司投资运营，是深圳湾科技园的海外拓展项目。中心为初创团队与成熟企业提供协作办公空间与孵化服务，并致力于建立国际科技合作渠道、对接海外创新创业资源，推动中美之间人才、技术与信息的高效流动。本次为扶摇计划提供活动场地支持。",
   },
 ];

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const TIER_BADGE: Record<string, string> = {
   gold: "bg-gradient-to-r from-amber-400 to-yellow-500",
   silver: "bg-gradient-to-r from-slate-300 to-slate-400",
+  venue: "bg-gradient-to-r from-teal-400 to-cyan-500",
 };
 
 export default function SponsorsPage() {
