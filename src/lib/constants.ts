@@ -462,7 +462,7 @@ export type SponsorTier = "gold" | "silver";
 export interface TierSponsor {
   name: string;
   tier: SponsorTier;
-  logo: string;
+  logo?: string;
   website?: string;
   description: string;
 }
@@ -494,6 +494,13 @@ export const TIER_SPONSORS: TierSponsor[] = [
     logo: "/images/sponsors/incepvision.png",
     description:
       "美国允惟律师事务所（IncepVision）是一家位于硅谷的精品律师事务所，专注于公司法和证券法，致力于为企业提供兼具专业深度与商业视角的法律解决方案。其创始律师刘晓笑是硅谷活跃的公司法律师与股权架构专家，曾参与超过 70 项并购、80 余项风险投资项目，并为 700 余家科技公司提供法律服务；兼具中国律师资格及美国加州、纽约律师执业资格，同时持续推动美国公司法知识普及，在华语创业与法律社群中具有广泛影响力。",
+  },
+  {
+    name: "未名天使（Weiming Angels）",
+    tier: "silver",
+    logo: "/images/sponsors/weiming-angels.png",
+    description:
+      "未名天使（Weiming Angels）成立于 2014 年 1 月，由北京大学北加州校友会企业家与高管俱乐部（EnE Club）发起，是硅谷活跃的华人天使投资人网络，现有 40 余位天使投资人。未名天使每月评估创业项目，主要关注估值 1000 万美元以下的早期公司，由成员共同完成尽职调查与投资决策，并在资金之外为创业者提供行业指导与管理辅导。硅谷早期基金 SV Tech Ventures 亦源自未名天使俱乐部。",
   },
   {
     name: "皓元医药（Chemexpress）",
