@@ -58,15 +58,17 @@ export default function SponsorsPage() {
                   {sponsors.map((s, i) => (
                     <ScrollReveal key={s.name} delay={i * 0.08}>
                       <div className="flex flex-col gap-6 rounded-2xl border border-black/5 bg-white p-6 shadow-sm md:flex-row md:items-center md:gap-8 md:p-8">
-                        <div className="flex w-full shrink-0 items-center justify-center md:w-56">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={s.logo}
-                            alt={s.name}
-                            className="max-h-20 w-auto max-w-full object-contain"
-                          />
-                        </div>
-                        <div className="md:border-l md:border-black/5 md:pl-8">
+                        {s.logo && (
+                          <div className="flex w-full shrink-0 items-center justify-center md:w-56">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={s.logo}
+                              alt={s.name}
+                              className="max-h-20 w-auto max-w-full object-contain"
+                            />
+                          </div>
+                        )}
+                        <div className={s.logo ? "md:border-l md:border-black/5 md:pl-8" : ""}>
                           <h3 className="text-lg font-bold text-text">{s.name}</h3>
                           <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                             {s.description}
