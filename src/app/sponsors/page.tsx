@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 const TIER_BADGE: Record<string, string> = {
   gold: "bg-gradient-to-r from-amber-400 to-yellow-500",
+  cohost: "bg-gradient-to-r from-indigo-400 to-blue-500",
   silver: "bg-gradient-to-r from-slate-300 to-slate-400",
   venue: "bg-gradient-to-r from-teal-400 to-cyan-500",
 };

@@ -449,7 +449,7 @@ export const FOOTER_EN = {
 // 与「发起方」(SPONSORS，五大校友会) 不同：这里是按等级致谢的商业赞助商。
 // 新增赞助商只需往 TIER_SPONSORS 追加一项，页面自动按 tier 分组渲染。
 
-export type SponsorTier = "gold" | "silver" | "venue";
+export type SponsorTier = "gold" | "cohost" | "silver" | "venue";
 
 export interface TierSponsor {
   name: string;
@@ -457,6 +457,8 @@ export interface TierSponsor {
   logo?: string;
   website?: string;
   description: string;
+  // 英文介绍，供英文页使用
+  descriptionEn?: string;
 }
 
 export const SPONSORS_PAGE = {
@@ -465,11 +467,12 @@ export const SPONSORS_PAGE = {
   intro: "扶摇计划的顺利举办，离不开以下赞助商的慷慨支持。",
   tierLabels: {
     gold: "金牌赞助",
+    cohost: "联合主办/场地合作",
     silver: "银牌赞助",
     venue: "场地赞助",
   } as Record<SponsorTier, string>,
   // 决定页面上等级的展示顺序
-  tierOrder: ["gold", "silver", "venue"] as SponsorTier[],
+  tierOrder: ["gold", "cohost", "silver", "venue"] as SponsorTier[],
 };
 
 export const TIER_SPONSORS: TierSponsor[] = [
@@ -501,6 +504,16 @@ export const TIER_SPONSORS: TierSponsor[] = [
     logo: "/images/sponsors/chemexpress.png",
     description:
       "皓元医药是一家生物医药 CRO&CDMO 上市公司，专注于为全球生物医药行业提供小分子、ADC、小核酸、多肽等的研发和生产外包服务。皓元医药在全球范围内拥有 5 个研发中心、6 个生产基地、6 个国际商务中心，服务超过 11,000 家合作伙伴。",
+  },
+  {
+    name: "钱塘中心（Q Bay Center）",
+    tier: "cohost",
+    logo: "/images/sponsors/qbay-center.jpg",
+    website: "https://qbay.com",
+    description:
+      "钱塘中心（Q Bay Center）由杭州海外创新中心有限公司于 2018 年建设运营，位于硅谷核心区圣何塞（160 E Tasman Dr, San Jose, CA），占地近 6 英亩、总建筑面积逾 11 万平方英尺。中心以「平台 + 投资 + 服务」为定位，融合物业空间、商业展示、金融投资、技术合作、商务服务与创业孵化，为初创及成长型企业提供联合办公、独立办公室、生物医药湿实验室、路演厅与会议空间，重点关注生物医药、人工智能、半导体等硬科技领域，致力于促进中美科技创新合作与产业对接。",
+    descriptionEn:
+      "Q Bay Center, founded in 2018 by Hangzhou Overseas Innovation Center, is a Silicon Valley-based platform that connects and supports innovation and entrepreneurship, located at 160 E Tasman Dr in North San Jose. Spanning nearly six acres with more than 112,000 sq ft of space, the center follows a \"Platform + Investment + Services\" model that combines real property, business exhibition, financial activity, technology cooperation, business services and startup incubation. It offers co-working desks, private offices, biotech wet labs, a roadshow hall and meeting rooms to startups and growing companies, with a focus on biotech, AI, semiconductors and other deep-tech fields.",
   },
   {
     name: "EEE Foundation（Executive Education Ecosystem）",
